@@ -1,0 +1,14 @@
+test_all_clone_runtime_files_are_in_project_root (test_data_integrity.DataIntegrityTests.test_all_clone_runtime_files_are_in_project_root) ... ok
+test_supplied_price_data_has_expected_range_and_no_missing_values (test_data_integrity.DataIntegrityTests.test_supplied_price_data_has_expected_range_and_no_missing_values) ... ok
+test_historical_window_and_drawdown_are_explicit (test_portfolio_model.PortfolioModelTests.test_historical_window_and_drawdown_are_explicit) ... ok
+test_locked_experiment_requires_matching_committed_prediction (test_portfolio_model.PortfolioModelTests.test_locked_experiment_requires_matching_committed_prediction) ... ok
+test_mandate_verdicts_show_failures_and_unverified_gates (test_portfolio_model.PortfolioModelTests.test_mandate_verdicts_show_failures_and_unverified_gates) ... ok
+test_rejects_invalid_correlation_and_weights (test_portfolio_model.PortfolioModelTests.test_rejects_invalid_correlation_and_weights) ... ok
+test_release_time_excludes_same_day_before_415 (test_portfolio_model.PortfolioModelTests.test_release_time_excludes_same_day_before_415) ... ok
+test_training_baselines_calculate_return_and_risk (test_portfolio_model.PortfolioModelTests.test_training_baselines_calculate_return_and_risk) ... ok
+test_transaction_cost_drag_uses_turnover_and_cost (test_portfolio_model.PortfolioModelTests.test_transaction_cost_drag_uses_turnover_and_cost) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.034s
+
+OK

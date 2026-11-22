@@ -32,5 +32,4 @@ Hi everyone, this is my finance 439  project 2 investment management  applicatio
 
 
 00:03:14
- It must also  meet the investment mandate and have  reliable supporting evidence. This  application is for educational purposes  only, not investment advice.  Thank you.
-
+ It must also  meet the investment mandate and have  reliable supporting evidence. This  application is for educational purposes  only, not investment advice.  Thank you. 

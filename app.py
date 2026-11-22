@@ -9,6 +9,8 @@ import streamlit as st
 
 from portfolio_model import (
     ASSETS,
+    LOCKED_BASE_TRANSACTION_COST_BPS,
+    LOCKED_CHANGED_TRANSACTION_COST_BPS,
     PORTFOLIOS,
     TRAINING_CORRELATIONS,
     TRAINING_RETURNS,
@@ -17,11 +19,11 @@ from portfolio_model import (
     historical_metrics,
     historical_portfolio_metrics,
     load_price_data,
+    locked_transaction_cost_comparison,
     locked_experiment_ready,
     mandate_checks,
     portfolio_metrics,
     portfolio_verdict,
-    run_changed_input_test,
     transaction_cost_drag,
 )
 
@@ -369,17 +371,14 @@ with tabs[4]:
         "is your attestation."
     )
     st.write(
-        "The test changes the VT expected-return training assumption and compares "
-        "the three model portfolio returns and volatilities. It does not change or "
-        "validate market data."
+        "The test compares the equal-weight BIL/IEF/LQD/VT portfolio at 25% annual "
+        "turnover, increasing transaction costs from 25 to 50 basis points per "
+        "traded dollar. Gross expected return assumptions remain unchanged."
     )
-    changed_vt_return = st.slider(
-        "Changed VT expected return (%)",
-        min_value=3.0,
-        max_value=12.0,
-        value=7.0,
-        step=0.5,
-        key="locked_changed_vt_return",
+    st.write(
+        f"Locked input: {LOCKED_BASE_TRANSACTION_COST_BPS:.0f} to "
+        f"{LOCKED_CHANGED_TRANSACTION_COST_BPS:.0f} basis points per traded dollar; "
+        "annual turnover is fixed at 25%."
     )
     prediction_text = st.text_area(
         "Your own pre-test prediction (write this yourself, without AI)",
@@ -394,7 +393,8 @@ with tabs[4]:
             PREDICTION_PATH.parent.mkdir(parents=True, exist_ok=True)
             document = (
                 "# Changed-input prediction (AI-off; written by student)\n\n"
-                f"Changed input: VT expected return = {changed_vt_return:.2f}%\n\n"
+                "Changed input: transaction cost = "
+                f"{LOCKED_CHANGED_TRANSACTION_COST_BPS:.0f} basis points per traded dollar\n\n"
                 "Prediction:\n"
                 f"{prediction_text.strip()}\n"
             )
@@ -422,7 +422,7 @@ with tabs[4]:
     )
     ready, gate_message = locked_experiment_ready(
         prediction_document,
-        changed_vt_return,
+        LOCKED_CHANGED_TRANSACTION_COST_BPS,
         commit_sha,
         github_commit_url,
         personally_committed,
@@ -439,10 +439,12 @@ with tabs[4]:
         st.info(gate_message)
 
     if st.button("Run locked changed-input test", disabled=not ready):
-        result = run_changed_input_test(changed_vt_return)
+        result = locked_transaction_cost_comparison()
         EXPERIMENT_RESULTS_PATH.parent.mkdir(parents=True, exist_ok=True)
         result_document = {
-            "changed_vt_expected_return_percent": changed_vt_return,
+            "changed_transaction_cost_bps_per_traded_dollar": (
+                LOCKED_CHANGED_TRANSACTION_COST_BPS
+            ),
             "prediction_file": str(PREDICTION_PATH.relative_to(ROOT)),
             "github_commit_sha": commit_sha,
             "github_commit_url": github_commit_url,
@@ -452,6 +454,41 @@ with tabs[4]:
             json.dumps(result_document, indent=2) + "\n", encoding="utf-8"
         )
         st.success("The committed-prediction gate passed; the test has now run.")
+        st.dataframe(
+            pd.DataFrame(
+                [
+                    {
+                        "Scenario": label,
+                        "Transaction cost": (
+                            f"{scenario['transaction_cost_bps_per_traded_dollar']:.0f} bps"
+                        ),
+                        "Gross expected return": (
+                            f"{scenario['gross_expected_return']:.4%}"
+                        ),
+                        "Transaction-cost drag": (
+                            f"{scenario['transaction_cost_drag']:.4%}"
+                        ),
+                        "Net expected return": (
+                            f"{scenario['net_expected_return']:.4%}"
+                        ),
+                        "6.5% classroom comparison": (
+                            scenario["classroom_comparison_result"]
+                        ),
+                    }
+                    for label, scenario in (
+                        ("Before", result["before"]),
+                        ("After", result["after"]),
+                    )
+                ]
+            ),
+            hide_index=True,
+            width="stretch",
+        )
+        st.write(
+            "Committee decision changes: "
+            f"{'Yes' if result['committee_decision_changes'] else 'No'} — "
+            f"{result['committee_decision']} remains in effect."
+        )
         st.json(result_document)
     if EXPERIMENT_RESULTS_PATH.is_file():
         st.subheader("Previously saved changed-input test result")

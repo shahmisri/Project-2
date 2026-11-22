@@ -28,6 +28,8 @@ LIQUIDITY_MINIMUM = 0.90
 ISSUER_LIMIT = 0.08
 TURNOVER_LIMIT = 0.25
 RELEASE_TIME = "16:15"
+LOCKED_BASE_TRANSACTION_COST_BPS = 25.0
+LOCKED_CHANGED_TRANSACTION_COST_BPS = 50.0
 
 PORTFOLIOS: dict[str, tuple[float, ...]] = {
     "Equal weight": (0.25, 0.25, 0.25, 0.25),
@@ -37,7 +39,7 @@ PORTFOLIOS: dict[str, tuple[float, ...]] = {
 
 _COMMIT_SHA = re.compile(r"^[0-9a-fA-F]{7,40}$")
 _PREDICTION_INPUT = re.compile(
-    r"^Changed input: VT expected return = (-?\d+(?:\.\d+)?)%$",
+    r"^Changed input: transaction cost = (\d+(?:\.\d+)?) basis points per traded dollar$",
     flags=re.MULTILINE,
 )
 
@@ -311,7 +313,7 @@ def prediction_input_from_document(document: str) -> float | None:
 
 def locked_experiment_ready(
     prediction_document: str,
-    changed_vt_return: float,
+    changed_transaction_cost_bps: float,
     commit_sha: str,
     github_commit_url: str,
     personally_committed: bool,
@@ -321,8 +323,8 @@ def locked_experiment_ready(
         return False, "Write and save your own prediction before testing."
     saved_input = prediction_input_from_document(prediction_document)
     if saved_input is None:
-        return False, "Saved prediction is missing its changed-input record."
-    if not np.isclose(saved_input, changed_vt_return, atol=1e-9):
+        return False, "Saved prediction is missing its changed transaction-cost record."
+    if not np.isclose(saved_input, changed_transaction_cost_bps, atol=1e-9):
         return False, "The changed input differs from your saved prediction; rewrite and commit it."
     if not _COMMIT_SHA.fullmatch(commit_sha.strip()):
         return False, "Enter the GitHub commit SHA that contains this prediction."
@@ -338,14 +340,40 @@ def locked_experiment_ready(
     return True, "Prediction gate passed; the changed-input test can be run manually."
 
 
-def run_changed_input_test(changed_vt_return: float) -> dict[str, dict[str, float]]:
-    """Run the explicitly requested test after the app's prediction gate passes."""
-    changed_returns = TRAINING_RETURNS.copy()
-    changed_returns[3] = changed_vt_return / 100
-    results: dict[str, dict[str, float]] = {}
-    for name, weights in PORTFOLIOS.items():
-        results[name] = portfolio_metrics(weights, returns=changed_returns)
-    return results
+def locked_transaction_cost_comparison() -> dict[str, Any]:
+    """Calculate the locked equal-weight portfolio comparison without running the UI workflow."""
+    gross_return = portfolio_metrics(PORTFOLIOS["Equal weight"])["expected_return"]
+
+    def scenario(cost_basis_points: float) -> dict[str, float | str]:
+        drag = transaction_cost_drag(TURNOVER_LIMIT, cost_basis_points)
+        net_return = gross_return - drag
+        comparison = (
+            "PASS"
+            if net_return >= RETURN_PROXY - 1e-12
+            else "FAIL"
+        )
+        return {
+            "transaction_cost_bps_per_traded_dollar": cost_basis_points,
+            "gross_expected_return": gross_return,
+            "transaction_cost_drag": drag,
+            "net_expected_return": net_return,
+            "classroom_comparison_result": comparison,
+        }
+
+    before = scenario(LOCKED_BASE_TRANSACTION_COST_BPS)
+    after = scenario(LOCKED_CHANGED_TRANSACTION_COST_BPS)
+    return {
+        "portfolio": "Equal-weight BIL/IEF/LQD/VT",
+        "annual_turnover": TURNOVER_LIMIT,
+        "before": before,
+        "after": after,
+        "classroom_comparison_changes": (
+            before["classroom_comparison_result"]
+            != after["classroom_comparison_result"]
+        ),
+        "committee_decision_changes": False,
+        "committee_decision": "NO PILOT AUTHORIZATION",
+    }
 
 
 def load_price_data(path: Path) -> pd.DataFrame:

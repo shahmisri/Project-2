@@ -83,8 +83,46 @@ However, the higher transaction costs will further weaken the case for the equal
 
 This prediction has been recorded before executing the changed-input experiment. The observed results will be documented separately after the pre-run GitHub commit.
 
-**Pre-run GitHub commit:** Pending
+**Pre-run GitHub commit:** b7deec38cddd2f6c0177e89ff522f5092e7e1ed1
 
-**Observed result:** Not yet tested
+**Observed result:** Net expected return decreased from 5.1375% to 5.0750% when transaction costs increased from 25 to 50 bps.
 
-**Decision after experiment:** Pending
+**Decision after experiment:** No change — NO PILOT AUTHORIZATION remains in effect.
+
+## Locked Changed-Input Experiment — Post-Run Results
+
+**Experiment date:** November 21, 2026
+
+**Pre-run prediction commit:** `b7deec38cddd2f6c0177e89ff522f5092e7e1ed1`
+
+**Commit URL:** https://github.com/shahmisri/Project-2/commit/b7deec38cddd2f6c0177e89ff522f5092e7e1ed1
+
+### Experiment
+
+I increased transaction costs from 25 to 50 basis points per traded dollar while holding annual turnover at 25% for the equal-weight BIL/IEF/LQD/VT portfolio.
+
+### Observed Results
+
+| Metric | Before | After |
+|---|---:|---:|
+| Transaction cost | 25 bps | 50 bps |
+| Gross expected return | 5.2000% | 5.2000% |
+| Transaction-cost drag | 0.0625% | 0.1250% |
+| Net expected return | 5.1375% | 5.0750% |
+| 6.5% classroom comparison | FAIL | FAIL |
+
+The expected net return decreased by 0.0625 percentage points, equivalent to 6.25 basis points. Gross expected return remained unchanged.
+
+### Prediction vs. Actual Results
+
+My prediction was supported by the observed model output. I predicted that higher transaction costs would reduce the portfolio's expected net return from approximately 5.14% to 5.08%, without changing its gross return or the overall committee decision.
+
+The model produced a net expected return of 5.1375% before the change and 5.0750% afterward. Both scenarios failed the 6.5% classroom comparison.
+
+### Decision and Implications
+
+The committee decision did not change. **No pilot authorization remains in effect.**
+
+The experiment demonstrates that higher implementation costs reduce expected net performance. It does not resolve the outstanding point-in-time signal validity and mandate-compliance concerns.
+
+**Conclusion:** The changed-input test supports the original prediction, but it does not justify authorizing an allocation.

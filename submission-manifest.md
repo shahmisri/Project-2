@@ -1,64 +1,108 @@
 # Project 2 — Submission Manifest
 
-**Status:** Application implemented and locked changed-input experiment completed. Final video submissions and independent validation requirements remain outstanding.
+**Project:** Meridian Foundation — Investment Management Application
 
-| Deliverable | Status | Notes |
-|---|---|---|
-| Streamlit dashboard (`app.py`) | Complete | Runnable investment management dashboard with portfolio comparisons, risk analysis, and mandate checks |
-| Setup instructions (`README.md`) | Complete | Includes installation, Streamlit launch, and test instructions; previously verified through a fresh local run |
-| Mandate, objectives, benchmark, universe | Complete with limitations | Actual CPI + 4% objective distinguished from the 6.5% classroom comparison |
-| Equal-weight and benchmark baselines | Complete | Based on Lab 14 classroom assumptions |
-| Constrained candidate and mandate checks | Implemented; not cleared | Some checks pass, but full compliance remains unverified |
-| Historical ETF data and data card | Included | Lab 15 data; independent source verification remains incomplete |
-| DGS10 data and data card | Included; quarantined | Incomplete point-in-time history prevents signal authorization |
-| Risk and stress-test controls | Implemented | Interactive scenario analysis; not independently validated forecasts |
-| Automated tests | Passed locally | Copilot reported 10 passing tests; final uploaded version should be tested again |
-| Known-answer reconciliation | Documented | `evidence/known-answer-reconciliation.md` |
-| Decision memo | Updated | `docs/decision-memo.md`; recommends 0% pilot allocation |
-| Validation record | Updated | `docs/validation-and-ai-use.md`; includes prediction and observed results |
-| Pre-run prediction commit | Complete | GitHub commit `b7deec38cddd2f6c0177e89ff522f5092e7e1ed1` |
-| Locked changed-input experiment | Complete | Transaction costs increased from 25 to 50 bps; net expected return declined from 5.1375% to 5.0750% |
-| Experiment evidence files | Generated locally; upload to verify | `evidence/changed_input_prediction.md` and `evidence/changed_input_results.json` |
-| Cold-run evidence | Documented | `docs/github-cold-run.md`; update to reflect the latest application changes |
-| Video script | Drafted | `docs/video-script.md` |
-| Video 1 — Application demonstration | Not yet submitted | Maximum 3 minutes |
-| Video 2 — Validation and sensitivity | Not yet submitted | Maximum 5 minutes |
-| Video 3 — Recommendation and decision defense | Not yet submitted | Maximum 5 minutes |
-| Video links and transcripts | Pending | Add links and transcripts to submission materials |
-| Full mandate verification and pilot approval | Not cleared | Requires further market data, validation, and CIO/committee decisions |
+**GitHub Repository:** https://github.com/shahmisri/Project-2
 
-## Locked Changed-Input Experiment Evidence
+**Status:** Application implemented, investment decision documented, and locked changed-input experiment completed. Final video links, transcripts, and repository verification remain to be completed.
 
-**Pre-run GitHub commit:**
-https://github.com/shahmisri/Project-2/commit/b7deec38cddd2f6c0177e89ff522f5092e7e1ed1
+## 1. Project Deliverables
 
-**Input change:** Transaction costs increased from 25 to 50 basis points per traded dollar.
+| # | Deliverable | Status | Location / Evidence |
+|---|---|---|---|
+| 1 | Runnable Streamlit application | Complete locally | `app.py`, `portfolio_model.py` |
+| 2 | README and setup instructions | Included | `README.md`, `requirements.txt` |
+| 3 | Investment mandate and decision framework | Complete with limitations | Streamlit dashboard and `docs/decision-memo.md` |
+| 4 | Portfolio baselines and constrained candidate | Implemented | Equal-weight, benchmark, and constrained portfolio comparisons |
+| 5 | Historical ETF data and documentation | Included | `data/etf_monthly_prices.csv`, `data/ETF-data-card.md` |
+| 6 | Point-in-time DGS10 evidence | Included; signal quarantined | `data/dgs10_observations.csv`, `data/DGS10-data-card.md` |
+| 7 | Risk analysis, mandate checks, and stress testing | Implemented | Interactive Streamlit application |
+| 8 | Automated tests, reconciliation, and reproducibility | Documented | `tests/`, `evidence/test-results.txt`, `evidence/known-answer-reconciliation.md`, `docs/github-cold-run.md` |
+| 9 | Locked changed-input experiment | Completed | Pre-run GitHub commit, prediction, and observed result |
+| 10 | Final investment decision memo | Updated | `docs/decision-memo.md` |
+| 11 | Validation and evidence documentation | Updated | `docs/validation-and-ai-use.md` |
+| 12 | Three presentation videos and transcripts | Recorded; final submission pending | YouTube links and transcript links to be added below |
 
-**Annual turnover:** 25%.
+## 2. Locked Changed-Input Experiment Evidence
 
-**Portfolio:** Equal-weight BIL/IEF/LQD/VT.
+**Pre-run GitHub commit:** `b7deec38cddd2f6c0177e89ff522f5092e7e1ed1`
 
-**Observed results:**
-- Gross expected return remained 5.2000%.
-- Transaction-cost drag increased from 0.0625% to 0.1250%.
-- Net expected return decreased from 5.1375% to 5.0750%.
-- Both scenarios failed the 6.5% classroom comparison.
-- Committee authorization remained unchanged: no pilot authorization.
+**Commit URL:** https://github.com/shahmisri/Project-2/commit/b7deec38cddd2f6c0177e89ff522f5092e7e1ed1
 
-The model results supported the pre-run prediction.
+**Experiment date:** November 21, 2026
 
-## Outstanding Submission Items
+**Portfolio:** Equal-weight BIL/IEF/LQD/VT
 
-- Verify that all updated Python files, experiment evidence, and documentation are present in GitHub.
-- Run the automated tests on the final repository version.
-- Complete and upload the three presentation videos.
-- Include required video links and transcripts in the final submission.
-- Confirm all repository links and submission instructions before submitting.
+**Changed input:** Transaction costs increased from 25 to 50 basis points per traded dollar.
 
-## Final Investment Decision
+**Annual turnover:** 25%
 
-**Recommendation: Do not authorize a pilot.**
+### Observed Results
 
-The current supported pilot allocation is 0%. A conditional 5%–10% pilot may be reconsidered only after resolving outstanding mandate-compliance, point-in-time data-integrity, and validation requirements.
+| Metric | Before | After |
+|---|---:|---:|
+| Transaction cost | 25 bps | 50 bps |
+| Gross expected return | 5.2000% | 5.2000% |
+| Transaction-cost drag | 0.0625% | 0.1250% |
+| Net expected return | 5.1375% | 5.0750% |
+| 6.5% classroom comparison | FAIL | FAIL |
+| Committee decision | No pilot authorization | No pilot authorization |
 
-The application is an educational decision-support tool and does not establish an executable investment recommendation.
+The model results supported the pre-run prediction that higher transaction costs would reduce expected net returns without changing gross expected returns or the committee decision.
+
+**Evidence files:**
+- `evidence/changed_input_prediction.md`
+- `evidence/changed_input_results.json`
+- `docs/validation-and-ai-use.md`
+
+## 3. Presentation Videos
+
+### Video 1 — Application Demonstration
+
+**YouTube link:** https://youtu.be/bOSxfeaUE6Q 
+
+**Transcript:** https://github.com/shahmisri/Project-2/blob/main/docs/video-1-transcript.md
+
+**Content:** Application overview, portfolio comparison, mandate checks, sensitivity controls, historical data limitations, and final recommendation.
+
+### Video 2 — Validation and Sensitivity
+
+**YouTube link:** https://youtu.be/fqmVKurWSbA
+
+**Transcript:** https://github.com/shahmisri/Project-2/blob/main/docs/video-2-transcript.md 
+
+**Content:** Automated testing, known-answer reconciliation, stress testing, locked changed-input experiment, and point-in-time data integrity.
+
+### Video 3 — Investment Recommendation and Committee Defense
+
+**YouTube link:** https://youtu.be/SToZYf-3IFY
+
+**Transcript:** https://github.com/shahmisri/Project-2/blob/main/docs/video-3-transcript.md
+
+**Content:** Investment mandate, portfolio comparison, recommendation rationale, experiment evidence, quantified decision triggers, and conditions for reconsideration.
+
+## 4. Final Investment Decision
+
+**Recommendation: Do not authorize a pilot allocation.**
+
+The currently supported pilot allocation is **0%**.
+
+A conditional **5%–10% pilot sleeve** may be reconsidered only after the outstanding mandate-compliance, point-in-time data-integrity, and validation requirements are resolved.
+
+The constrained candidate passes the simplified classroom return comparison and reserve checks, but full investment mandate compliance has not been established.
+
+The DGS10 signal remains quarantined pending sufficient point-in-time validation.
+
+This application is an educational decision-support tool and does not establish an executable investment recommendation.
+
+## 5. Final Submission Reference
+
+**Repository:** https://github.com/shahmisri/Project-2
+
+**Decision memo:** `docs/decision-memo.md`
+
+**Validation record:** `docs/validation-and-ai-use.md`
+
+**Submission manifest:** `submission-manifest.md`
+
+**Final recommendation:** NO PILOT AUTHORIZATION — 0% allocation.

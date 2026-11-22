@@ -48,3 +48,43 @@ requires a matching input, commit SHA, commit URL, and a student attestation. It
 does not query GitHub and cannot independently establish authorship or commit
 contents. The prediction/result evidence files are created only after the
 student uses the app buttons.
+
+## Locked Changed-Input Record — Pre-Run Prediction
+
+**Date:** November 21, 2026
+
+**Portfolio:** Equal-weight portfolio (BIL, IEF, LQD, VT)
+
+**Input being changed:** Transaction cost (basis points per traded dollar)
+
+**Original value:** 25 basis points (0.25%)
+
+**New value:** 50 basis points (0.50%)
+
+**Annual portfolio turnover assumption:** 25%
+
+### My Prediction Before Running the Experiment
+
+I predict that increasing transaction costs from 25 to 50 basis points will decrease the portfolio's expected return after costs while leaving its gross expected return and volatility unchanged.
+
+Under the original assumptions, my equal-weight portfolio has a gross expected annual return of 5.20%. At 25 basis points of transaction costs and 25% annual turnover, the estimated net return is approximately 5.14%.
+
+After increasing transaction costs to 50 basis points, I expect the transaction-cost drag to increase from approximately 0.06% to 0.125%. Therefore, I predict that the portfolio's expected return after costs will decrease to approximately **5.08%**.
+
+### Expected Effect on the Investment Decision
+
+I predict that the equal-weight portfolio will continue to fail the 6.5% classroom return comparison, since its expected return is already below that threshold.
+
+I do not expect this change to reverse my overall committee recommendation. My decision will remain **PILOT — NOT AUTHORIZED**, because the process still has unresolved point-in-time data validity and full mandate-compliance requirements.
+
+However, the higher transaction costs will further weaken the case for the equal-weight portfolio.
+
+### Prediction Status
+
+This prediction has been recorded before executing the changed-input experiment. The observed results will be documented separately after the pre-run GitHub commit.
+
+**Pre-run GitHub commit:** Pending
+
+**Observed result:** Not yet tested
+
+**Decision after experiment:** Pending

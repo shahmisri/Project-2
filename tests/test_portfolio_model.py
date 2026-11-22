@@ -11,6 +11,9 @@ from portfolio_model import (
     eligible_dgs10_observation,
     historical_metrics,
     historical_portfolio_metrics,
+    LOCKED_BASE_TRANSACTION_COST_BPS,
+    LOCKED_CHANGED_TRANSACTION_COST_BPS,
+    locked_transaction_cost_comparison,
     locked_experiment_ready,
     mandate_checks,
     observation_published_by,
@@ -81,6 +84,34 @@ class PortfolioModelTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "between 0% and 100%"):
             transaction_cost_drag(1.2, 40)
 
+    def test_locked_transaction_cost_comparison_reports_gross_and_net_returns(self) -> None:
+        results = locked_transaction_cost_comparison()
+
+        self.assertEqual(results["portfolio"], "Equal-weight BIL/IEF/LQD/VT")
+        self.assertEqual(results["annual_turnover"], 0.25)
+        self.assertEqual(
+            results["before"]["transaction_cost_bps_per_traded_dollar"],
+            LOCKED_BASE_TRANSACTION_COST_BPS,
+        )
+        self.assertEqual(
+            results["after"]["transaction_cost_bps_per_traded_dollar"],
+            LOCKED_CHANGED_TRANSACTION_COST_BPS,
+        )
+        self.assertAlmostEqual(results["before"]["gross_expected_return"], 0.052)
+        self.assertAlmostEqual(results["after"]["gross_expected_return"], 0.052)
+        self.assertAlmostEqual(results["before"]["transaction_cost_drag"], 0.000625)
+        self.assertAlmostEqual(results["after"]["transaction_cost_drag"], 0.00125)
+        self.assertAlmostEqual(results["before"]["net_expected_return"], 0.051375)
+        self.assertAlmostEqual(results["after"]["net_expected_return"], 0.05075)
+        self.assertEqual(results["before"]["classroom_comparison_result"], "FAIL")
+        self.assertEqual(results["after"]["classroom_comparison_result"], "FAIL")
+        self.assertFalse(results["classroom_comparison_changes"])
+        self.assertFalse(results["committee_decision_changes"])
+        self.assertEqual(
+            results["committee_decision"],
+            "NO PILOT AUTHORIZATION",
+        )
+
     def test_release_time_excludes_same_day_before_415(self) -> None:
         observations = pd.DataFrame(
             [
@@ -121,25 +152,31 @@ class PortfolioModelTests(unittest.TestCase):
     def test_locked_experiment_requires_matching_committed_prediction(self) -> None:
         prediction = (
             "# Changed-input prediction\n"
-            "Changed input: VT expected return = 7.00%\n\n"
+            "Changed input: transaction cost = 50 basis points per traded dollar\n\n"
             "Prediction:\n"
             "I expect expected return to decline.\n"
         )
         allowed, _ = locked_experiment_ready(
             prediction,
-            7.0,
+            LOCKED_CHANGED_TRANSACTION_COST_BPS,
             "0123456789abcdef",
             "https://github.com/example/course/commit/0123456789abcdef",
             True,
         )
         changed_input, _ = locked_experiment_ready(
             prediction,
-            6.0,
+            LOCKED_BASE_TRANSACTION_COST_BPS,
             "0123456789abcdef",
             "https://github.com/example/course/commit/0123456789abcdef",
             True,
         )
-        not_committed, _ = locked_experiment_ready(prediction, 7.0, "", "", False)
+        not_committed, _ = locked_experiment_ready(
+            prediction,
+            LOCKED_CHANGED_TRANSACTION_COST_BPS,
+            "",
+            "",
+            False,
+        )
 
         self.assertTrue(allowed)
         self.assertFalse(changed_input)

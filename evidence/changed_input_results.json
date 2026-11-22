@@ -1,0 +1,27 @@
+{
+  "changed_transaction_cost_bps_per_traded_dollar": 50.0,
+  "prediction_file": "evidence/changed_input_prediction.md",
+  "github_commit_sha": "b7deec38cddd2f6c0177e89ff522f5092e7e1ed1",
+  "github_commit_url": "https://github.com/shahmisri/Project-2/commit/b7deec38cddd2f6c0177e89ff522f5092e7e1ed1",
+  "results": {
+    "portfolio": "Equal-weight BIL/IEF/LQD/VT",
+    "annual_turnover": 0.25,
+    "before": {
+      "transaction_cost_bps_per_traded_dollar": 25.0,
+      "gross_expected_return": 0.052000000000000005,
+      "transaction_cost_drag": 0.000625,
+      "net_expected_return": 0.051375000000000004,
+      "classroom_comparison_result": "FAIL"
+    },
+    "after": {
+      "transaction_cost_bps_per_traded_dollar": 50.0,
+      "gross_expected_return": 0.052000000000000005,
+      "transaction_cost_drag": 0.00125,
+      "net_expected_return": 0.05075,
+      "classroom_comparison_result": "FAIL"
+    },
+    "classroom_comparison_changes": false,
+    "committee_decision_changes": false,
+    "committee_decision": "NO PILOT AUTHORIZATION"
+  }
+}

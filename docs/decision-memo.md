@@ -1,96 +1,180 @@
-**AI-use disclosure:** AI assisted in organizing the analysis and drafting this memo. Calculations use the stated classroom assumptions and supplied Lab 15 data; no validation findings or experiment results were invented.
+# Meridian Foundation — Investment Management Decision Memo
+
+**AI-use disclosure:** AI assisted in organizing the analysis and drafting this memo. Calculations use the stated classroom assumptions and supplied Lab 15 data; no market observations or experiment results were invented.
 
 **Education-only disclosure:** This memo is for educational purposes only and is not investment advice.
 
-# Meridian Foundation — Decision Memo (Draft)
+**Decision:** Do not authorize a pilot on the evidence currently available.
 
-**Decision:** Do not authorize a pilot on the evidence currently available.  
-**Potential next step:** Reconsider a 5%–10% pilot sleeve only after the evidence
-gates and unresolved mandate questions below are addressed. The range is a
-committee discussion parameter, not a presently supported allocation.
+**Potential next step:** Reconsider a 5%–10% pilot sleeve only after the outstanding data-integrity, mandate-compliance, and validation requirements are satisfied. This range is a conditional committee discussion parameter, not an approved allocation.
 
-## Mandate and decision frame
+## 1. Mandate and Decision Frame
 
-Lab 13 describes a seven-year horizon, annual rebalancing, a CPI + 4% annual
-return objective net of costs over rolling five-year periods, and a 60% global
-equity / 40% U.S. investment-grade bond benchmark. It also documents long-only
-investing, a reserve minimum of 3%, at least 90% redeemability within five
-business days, an 8% cap on any single nonexempt company, and a 25% annual
-turnover ceiling absent committee approval. The calendar-year loss statement
-needs CIO clarification.
+The Meridian Foundation has a seven-year investment horizon with annual rebalancing. Its primary objective is to earn CPI + 4% annually, net of costs, over rolling five-year periods.
 
-Lab 14 uses 6.5% as a classroom return target. This memo treats it only as a
-comparison proxy; no CPI observations, forward estimates, or net-cost
-validation were supplied to test the actual CPI + 4% objective.
+The mandate also specifies:
 
-## Baseline comparison
+- Benchmark: 60% global equities / 40% U.S. investment-grade bonds.
+- Investment universe: BIL, IEF, LQD, and VT.
+- Long-only investing with no leverage.
+- Minimum 3% reserve-eligible assets.
+- At least 90% of assets redeemable within five business days.
+- Maximum 8% exposure to any single nonexempt company.
+- Maximum 25% annual turnover without committee approval.
+- Calendar-year loss requirement requiring further CIO clarification.
 
-The following expected returns and volatilities are calculations from the
-Lab 14 training assumptions, not return forecasts:
+Lab 14 uses a 6.5% expected-return threshold as a classroom comparison proxy. This is **not equivalent to the Foundation's CPI + 4% objective**, which cannot currently be validated from the supplied information.
 
-| Portfolio | Weights (BIL / IEF / LQD / VT) | Model expected return | Model volatility | Reserve eligible | Checkable result |
-|---|---|---:|---:|---:|---|
-| Equal weight | 25 / 25 / 25 / 25% | 5.20% | 5.21% | 50% | Fails the 6.5% proxy |
-| Benchmark | 0 / 0 / 40 / 60% | 6.80% | 10.46% | 0% | Fails the 3% reserve rule |
-| Constrained candidate | 10 / 10 / 20 / 60% | 6.58% | 9.99% | 20% | Passes proxy and reserve checks only |
+## 2. Portfolio Baseline Comparison
 
-The benchmark volatility and baseline comparisons are reported in Lab 14. The
-constrained candidate's return and reserve share follow directly from the
-weights and Lab 14 training inputs; it is not presented as an optimized
-portfolio. Its model volatility is displayed in the app. No result here
-establishes future performance.
+The following results use Lab 14 classroom assumptions rather than independently validated market forecasts.
 
-All portfolios remain **not cleared** overall. The supplied materials do not
-establish five-day fund-level liquidity, ETF look-through issuer exposures,
-prior holdings/turnover, net transaction costs, actual CPI + 4% performance, or
-the loss-limit measurement and response process. Passing a subset of numerical
-checks does not establish suitability.
+| Portfolio | BIL / IEF / LQD / VT | Expected Return | Volatility | Reserve Eligible |
+|---|---|---:|---:|---:|
+| Equal weight | 25 / 25 / 25 / 25% | 5.20% | 5.21% | 50% |
+| Benchmark | 0 / 0 / 40 / 60% | 6.80% | 10.46% | 0% |
+| Constrained candidate | 10 / 10 / 20 / 60% | 6.58% | 9.99% | 20% |
 
-## Historical and point-in-time evidence
+**Key findings:**
 
-The copied Lab 15 ETF price file covers month-end observations from October
-2021 through September 2026. Lab 15 reports Yahoo Finance as the source and
-October 22, 2026 as the download date; retrieval details and adjustment settings
-were not supplied. Historical risk/return summaries in the app are descriptive
-calculations, not forecasts or out-of-sample validation.
+The equal-weight portfolio fails the 6.5% classroom comparison despite satisfying the simplified reserve check.
 
-Lab 17 reports three unchanged ALFRED-vintage DGS10 checks for September 30 to
-October 2, 2026, plus a later FRED value. This sparse sample does not establish
-daily point-in-time availability. The signal remains quarantined. The app
-excludes same-day DGS10 before the reported 4:15 p.m. ET release, but that
-control does not replace a complete vintage history or execution-time study.
+The benchmark exceeds the classroom comparison threshold but fails the 3% reserve requirement.
 
-## Stress and experiment status
+The constrained candidate passes both the 6.5% classroom comparison and simplified reserve check, but its full mandate compliance remains unverified.
 
-The dashboard offers interactive sensitivity scenarios for expected-return
-assumptions, historical estimation windows, LQD/VT correlation, transaction
-costs, constraints, and stop conditions. They are scenario calculations, not
-validated findings. No stress-test conclusion is reported as an observed
-experiment result here.
+All three portfolios remain **NOT CLEARED** because the supplied evidence does not establish issuer look-through concentration, fund-level liquidity, actual CPI + 4% performance, full transaction costs, previous holdings and turnover, or the calendar-year loss procedure.
 
-The changed-input test is locked. The student must personally write an AI-off
-prediction, save it, commit the prediction to GitHub, then enter its matching
-commit SHA and URL and attest to authorship before the app enables the one-run
-test. No prediction, commit, or result is included in this draft.
+The constrained candidate should not be interpreted as an optimized or approved portfolio.
 
-## Recommendation and monitoring if reconsidered
+## 3. Historical Data and Point-in-Time Evidence
 
-**Current recommendation: no pilot authorization.** A 5%–10% pilot may be
-considered only after:
+The supplied Lab 15 monthly ETF price file covers October 2021 through September 2026. Lab 15 identifies Yahoo Finance as the source and October 22, 2026 as the download date.
 
-1. The CIO confirms how CPI + 4%, net costs, and the rolling five-year period are
-   measured.
-2. The DGS10 vintage, release time, decision timestamp, and execution timestamp
-   are validated through a complete point-in-time data set.
-3. Fund liquidity/settlement, issuer look-through, initial holdings, and
-   turnover methods are documented.
-4. Historical inputs and calculations are independently checked and the
-   portfolio is evaluated out of sample with transaction costs and rolling
-   windows.
-5. The CIO defines the calendar-year loss measure, monitoring cadence, and
-   breach response.
+Because complete retrieval settings and adjustment details are unavailable, the historical results are descriptive rather than independently validated forecasts.
 
-If authorized later, review weights, risk, drawdown, turnover, and costs monthly;
-escalate any verified breach of the reserve, liquidity, concentration, or
-turnover rules; and do not operationalize the 10% loss statement until its
-definition and response are approved.
+The DGS10 interest-rate signal is also not cleared for live decision-making.
+
+Lab 17 identified three unchanged ALFRED vintage observations for September 30 through October 2, 2026. However, these limited observations do not establish complete historical point-in-time availability.
+
+The application excludes same-day DGS10 observations before the reported 4:15 p.m. ET release time, but additional historical vintage and execution-time validation is required.
+
+**Decision:** Keep the DGS10 signal quarantined until point-in-time integrity is established.
+
+## 4. Sensitivity and Stress Testing
+
+The application allows scenario analysis of:
+
+- Expected-return assumptions.
+- Historical estimation windows.
+- LQD/VT correlation assumptions.
+- Transaction costs and annual turnover.
+- Portfolio constraints and stopping conditions.
+
+These scenarios help identify model sensitivity but should not be interpreted as independently validated forecasts.
+
+A formal Locked Changed-Input Experiment was completed on November 21, 2026.
+
+## 5. Locked Changed-Input Experiment
+
+**Experiment:** Increase transaction costs from 25 to 50 basis points per traded dollar while holding annual turnover constant at 25%.
+
+**Portfolio tested:** Equal-weight BIL/IEF/LQD/VT.
+
+**Pre-run prediction commit:** `b7deec38cddd2f6c0177e89ff522f5092e7e1ed1`
+
+**Commit URL:** https://github.com/shahmisri/Project-2/commit/b7deec38cddd2f6c0177e89ff522f5092e7e1ed1
+
+### Observed Results
+
+| Metric | Before | After |
+|---|---:|---:|
+| Transaction cost | 25 bps | 50 bps |
+| Annual turnover | 25% | 25% |
+| Gross expected return | 5.2000% | 5.2000% |
+| Transaction-cost drag | 0.0625% | 0.1250% |
+| Net expected return | 5.1375% | 5.0750% |
+| 6.5% classroom comparison | FAIL | FAIL |
+| Committee authorization | Not authorized | Not authorized |
+
+### Prediction Reconciliation
+
+The pre-run prediction expected that doubling transaction costs would reduce the equal-weight portfolio's net expected return from approximately 5.14% to 5.08%, while leaving gross expected return and the committee decision unchanged.
+
+The observed model output confirmed that direction and approximate magnitude.
+
+Net expected return declined by **0.0625 percentage points (6.25 basis points)**.
+
+Gross expected return remained at 5.20%, and both scenarios failed the 6.5% classroom comparison.
+
+The committee decision did not change.
+
+### Interpretation
+
+The experiment demonstrates that higher implementation costs reduce the portfolio's expected net return without improving its ability to satisfy the classroom return comparison.
+
+This is a deterministic model sensitivity result, not independent evidence of future investment performance.
+
+**Conclusion:** The prediction was supported, but the results do not justify authorizing a pilot allocation.
+
+## 6. Final Investment Recommendation
+
+**Recommendation: NO PILOT AUTHORIZATION.**
+
+Although the constrained candidate produces a model expected return of 6.58% and volatility of 9.99%, there is insufficient evidence to confirm full compliance with the Foundation's investment mandate.
+
+The current approved pilot allocation is **0%**.
+
+A potential **5%–10% pilot sleeve** could be reconsidered only after the investment committee receives satisfactory evidence addressing the outstanding concerns.
+
+### Conditions for Reconsideration
+
+1. **Return objective:** Establish CPI observations and a valid method for testing the CPI + 4% objective, net of costs, over rolling five-year periods.
+
+2. **Point-in-time integrity:** Verify DGS10 vintage availability, release timestamps, portfolio decision times, and execution times before permitting the signal to influence allocations.
+
+3. **Liquidity:** Confirm that at least 90% of the portfolio is redeemable within five business days.
+
+4. **Reserve requirement:** Maintain at least 3% reserve-eligible assets.
+
+5. **Issuer concentration:** Confirm that no single nonexempt company exceeds 8% exposure on a look-through basis.
+
+6. **Turnover:** Maintain annual turnover at or below 25% unless the committee explicitly approves an exception.
+
+7. **Historical validation:** Independently reconcile historical inputs and evaluate performance using out-of-sample tests, rolling windows, and realistic transaction costs.
+
+8. **Loss controls:** Obtain CIO clarification of the calendar-year loss measure, monitoring process, and required response to a breach before enforcing a numerical loss rule.
+
+### Quantified Decision and Reversal Triggers
+
+The following measurable conditions would prevent approval or trigger reconsideration of any subsequently authorized pilot:
+
+| Measure | Trigger | Committee Response |
+|---|---|---|
+| Reserve-eligible assets | Below 3% | Escalate and restore compliance |
+| Five-day redeemability | Below 90% | Suspend additional allocation pending review |
+| Single nonexempt issuer | Above 8% | Require concentration remediation |
+| Annual turnover | Above 25% without approval | Halt unapproved turnover |
+| Classroom return comparison | Below 6.5% | Flag proxy failure; do not treat as a test of CPI + 4% |
+| DGS10 data validity | Any unresolved look-ahead or availability issue | Keep signal quarantined |
+| Calendar-year loss | Undefined until CIO approval | Do not assert compliance with an unapproved rule |
+
+These are monitoring and escalation thresholds, not proof that the overall investment mandate has been met.
+
+## 7. Monitoring and Implementation
+
+If a pilot is eventually authorized, the Foundation should review portfolio weights, estimated risk, realized drawdowns, liquidity, issuer concentration, turnover, and costs monthly.
+
+Any verified mandate breach should be escalated to the committee. The calendar-year loss process must be formally approved before implementation.
+
+The portfolio should not be expanded merely because it passes a classroom expected-return threshold.
+
+## 8. Final Conclusion
+
+The Project 2 application provides a reproducible framework for comparing portfolios, evaluating simplified mandate constraints, reviewing historical evidence, and examining sensitivity to changed assumptions.
+
+The Locked Changed-Input Experiment demonstrated that increasing transaction costs reduces expected net performance, confirming the pre-run prediction without changing the investment decision.
+
+However, unresolved point-in-time data integrity, incomplete mandate verification, and insufficient forward-looking validation prevent a defensible allocation recommendation.
+
+**Final committee decision: Maintain 0% pilot allocation and withhold authorization until the identified evidence requirements are satisfied.**
